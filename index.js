@@ -2,13 +2,11 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const query = require("./query");
-// const start = require("./init");
+const start = require("./init");
 
 // init body-parser for post
-app.use(express.json());
-app.use(express.urlencoded({
-    extended: true,
-}));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({extended: true, limit: '50mb'}));
 
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -18,11 +16,11 @@ const allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
-/* try {
+try {
     const started = start.init();
 } catch (error) {
     console.log(error);
-} */
+}
 
 app.get('/', (request, response) => {
     response.status(200).send('ok');
@@ -40,6 +38,10 @@ app.get('/', (request, response) => {
 app.post('/send', async (request, response) => {
     return await query.send(request, response);
 });
+
+app.get('/receive', async (request, response) => {
+    return await query.receive(request, response);
+})
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
