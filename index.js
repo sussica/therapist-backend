@@ -38,7 +38,7 @@ app.get('/', (request, response) => {
  * functionality: calls the apis on conversation and images and store its relative data into pg
  */
 app.post('/send', async (request, response) => {
-    await query.send();
+    return await query.send(request, response);
 });
 
 app.listen(port, () => {
