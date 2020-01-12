@@ -91,7 +91,9 @@ async function processImage(image) {
 }
 
 async function processConversation(sentence) {
-    // TODO
+    const params = {
+        // Request params
+    }
 }
 
 module.exports = {
