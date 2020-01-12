@@ -10,7 +10,7 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
-function createReserve(request, response) {
+/* function createReserve(request, response) {
     // assume all params are valid strings
     const vtname = request.body.vtname;
     const dlicense = request.body.dlicense;
@@ -76,12 +76,20 @@ function createReserve(request, response) {
                 message: "Problem Creating Reservation"
             });
         });
-}
+} */
 
 function send(request, response) {
     const image = response.body.image;
-    const senetence = response.body.sentence;
-    
+    const sentence = response.body.sentence;
+
+}
+
+function processImage(image) {
+    // TODO
+}
+
+function processSentence(sentence) {
+    // TODO
 }
 
 module.exports = {
