@@ -78,17 +78,19 @@ const pool = new Pool({
         });
 } */
 
-function send(request, response) {
+async function send(request, response) {
     const image = response.body.image;
-    const sentence = response.body.sentence;
-
+    const conversation = response.body.conversation;
+    const emotionData = await processImage(image);
+    const keyword = await processConversation(conversation);
+    // TODO store into pg
 }
 
-function processImage(image) {
+async function processImage(image) {
     // TODO
 }
 
-function processSentence(sentence) {
+async function processConversation(sentence) {
     // TODO
 }
 

@@ -32,10 +32,14 @@ app.get('/', (request, response) => {
 
 // @ all returns are returned in json.stringy()
 
-// Make a reservation
-// requires: vtname, dlicense, location, city, fromdate, todate, fromtime, totime
-// @return data: tuple if found, error if not found
-app.post('/send', query.send);
+/********
+ * url: /send
+ * body: {string conversation, string image, string therapist, string client, string timestamp}
+ * functionality: calls the apis on conversation and images and store its relative data into pg
+ */
+app.post('/send', async (request, response) => {
+    await query.send();
+});
 
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
